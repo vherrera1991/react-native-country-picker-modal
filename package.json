@@ -1,12 +1,12 @@
 {
-  "name": "react-native-country-picker-modal",
-  "version": "2.0.0",
+  "name": "@islacel/react-native-country-picker-modal",
+  "version": "2.0.1",
   "description": "react-native country picker",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xcarpentier/react-native-country-picker-modal.git"
+    "url": "git+https://github.com/vherrera1991/react-native-country-picker-modal.git"
   },
   "scripts": {
     "start": "yarn config:dev && expo start",
@@ -26,8 +26,6 @@
     "data:subregions": "rm -rf ./data/cca2.json && ./scripts/transform-world-countries.js --subregions > ./data/subregions.json",
     "cleaning": "rm -rf node_modules && rm -f yarn.lock && yarn cache clean && yarn install && watchman watch-del-all && rm -fr $TMPDIR/react-*",
     "verify": "yarn lint && yarn build && yarn test",
-    "prepublishOnly": "yarn verify && yarn config:npm",
-    "postpublish": "yarn config:dev",
     "deploy": "gh-pages -d web-build",
     "predeploy": "yarn verify && expo build:web && mkdir web-build/countries && cp ./data/countries.json web-build/countries/index.json"
   },
@@ -39,6 +37,7 @@
     "flag"
   ],
   "author": "Xavier Carpentier <xcapetir@gmail.com> (https://xaviercarpentier.com/)",
+  "private": false,
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xcarpentier/react-native-country-picker-modal/issues"

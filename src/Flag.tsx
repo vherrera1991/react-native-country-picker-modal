@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   emojiFlag: {
     alignItems: 'center',
+    color: 'black',
     justifyContent: 'center',
     borderWidth: 1 / PixelRatio.get(),
     borderColor: 'transparent',
