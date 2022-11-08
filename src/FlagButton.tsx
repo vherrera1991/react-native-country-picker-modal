@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   },
   flagWithSomethingContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
     alignItems: 'center',
+    flex: 1,
   },
   something: { fontSize: 16 },
 })
@@ -44,7 +44,7 @@ type FlagWithSomethingProp = Pick<
 > & { flagSize: number; allowFontScaling?: boolean }
 
 const FlagText = (props: TextProps & { children: ReactNode }) => (
-  <CountryText {...props} style={styles.something} />
+  <CountryText {...props} style={styles.something} numberOfLines={1}/>
 )
 
 const FlagWithSomething = memo(
@@ -81,29 +81,33 @@ const FlagWithSomething = memo(
 
     return (
       <View style={styles.flagWithSomethingContainer}>
-        {countryCode ? (
-          <Flag
-            {...{ withEmoji, countryCode, withFlagButton, flagSize }}
-          />
-        ) : (
-          <FlagText allowFontScaling={allowFontScaling}>{placeholder}</FlagText>
-        )}
+        <View>
+          {countryCode ? (
+            <Flag
+              {...{ withEmoji, countryCode, withFlagButton, flagSize }}
+            />
+          ) : (
+            <FlagText allowFontScaling={allowFontScaling}>{placeholder}</FlagText>
+          )}
+        </View>
 
-        {withCountryNameButton && countryName ? (
-          <FlagText allowFontScaling={allowFontScaling}>
-            {countryName + ' '}
-          </FlagText>
-        ) : null}
-        {withCurrencyButton && currency ? (
-          <FlagText
-            allowFontScaling={allowFontScaling}
-          >{`(${currency}) `}</FlagText>
-        ) : null}
-        {withCallingCodeButton && callingCode ? (
-          <FlagText
-            allowFontScaling={allowFontScaling}
-          >{`+${callingCode}`}</FlagText>
-        ) : null}
+       <View style={{ flexShrink: 1 }}>
+          {withCountryNameButton && countryName ? (
+            <FlagText allowFontScaling={allowFontScaling}>
+              {countryName + ' '}
+            </FlagText>
+          ) : null}
+          {withCurrencyButton && currency ? (
+            <FlagText
+              allowFontScaling={allowFontScaling}
+            >{`(${currency}) `}</FlagText>
+          ) : null}
+          {withCallingCodeButton && callingCode ? (
+            <FlagText
+              allowFontScaling={allowFontScaling}
+            >{`+${callingCode}`}</FlagText>
+          ) : null}
+        </View>
       </View>
     )
   },
@@ -136,7 +140,7 @@ export const FlagButton = ({
 }: FlagButtonProps) => {
   const { flagSizeButton: flagSize } = useTheme()
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onOpen}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onOpen} style={{ flexShrink: 1 }}>
       <View
         style={[
           styles.container,
