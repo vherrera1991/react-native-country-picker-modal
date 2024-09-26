@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   flagWithSomethingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
+    flexGrow: 1,
   },
   something: { fontSize: 16 },
 })
@@ -91,7 +91,7 @@ const FlagWithSomething = memo(
           )}
         </View>
 
-       <View style={{ flexShrink: 1 }}>
+       <View style={{ flex: 1, flexDirection: 'row' }}>
           {withCountryNameButton && countryName ? (
             <FlagText allowFontScaling={allowFontScaling}>
               {countryName + ' '}
@@ -140,7 +140,7 @@ export const FlagButton = ({
 }: FlagButtonProps) => {
   const { flagSizeButton: flagSize } = useTheme()
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onOpen} style={{ flexShrink: 1 }}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onOpen} style={{ flexGrow: 1 }}>
       <View
         style={[
           styles.container,
